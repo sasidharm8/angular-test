@@ -1,0 +1,45 @@
+<div class="container" style="max-height:500px;overflow-y:auto;margin-top:20px" *ngIf="userDetails && !showUserDetails">
+  
+  <div class="row" style="border:1px solid grey">
+    <div class="col-md-6"style="border:1px solid grey">Name</div>
+    <div class="col-md-6" style="border:1px solid grey">Picture</div>
+  </div>
+  <div class="row" *ngFor="let user of userDetails;let i=index;">
+     <div class="col-md-6" style="border:1px solid grey;" (click)="GotoUserDetails(i)" >
+       {{user.name.first}}
+     </div>
+     <div class="col-md-6" style="border:1px solid grey;text-align:center">
+       <img [src]="user.picture.thumbnail">
+     </div>
+  </div>
+  
+</div>
+<div class="container" style="margin:20px;text-align:center" *ngIf="!showUserDetails">
+  <button type="button" class="btn btn-primary" (click)="ShowAlluser()">Show User Detials </button>
+</div>
+<div class="container" *ngIf="showUserDetails" style="text-align:center">
+    <h2>User Details</h2>
+    <div>
+      
+      <label>Name:{{cusrrentUser?.name.title}} {{cusrrentUser?.name.first}} {{cusrrentUser?.name.last}}</label>
+      
+    </div>
+    <div>
+      
+      <label>Gender: {{cusrrentUser?.gender}}</label>
+      
+    </div>
+    <div>
+      <label>Cell: {{cusrrentUser?.cell}}</label>
+    </div>
+     <div>
+      <label>DOB: {{cusrrentUser?.dob.date|date }}</label>
+    </div>
+    <div>
+      <label>Age: {{cusrrentUser?.dob.age }}</label>
+    </div>
+    <div>
+      <label>Email: {{cusrrentUser?.email }}</label>
+    </div>
+</div>
+
